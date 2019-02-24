@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tetris"
         mc:Ignorable="d"
-        Title="Tetris" Height="377" Width="650" BorderBrush="White" OpacityMask="White" Foreground="White" Background="#FFECECEC" AllowsTransparency="True" WindowStyle="None">
+        Title="Tetris" Height="377" Width="650" BorderBrush="White" OpacityMask="White" Foreground="White" Background="#FFECECEC" AllowsTransparency="True" WindowStyle="None" MouseDown="Start_Window_MouseDown">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="images/cube-1678974_640.png"/>
