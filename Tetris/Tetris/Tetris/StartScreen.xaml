@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tron"
         mc:Ignorable="d"
-        Title="Tetris" Height="300" Width="500" BorderBrush="White" OpacityMask="White" Foreground="White" Background="White">
+        Title="Tetris" Height="377" Width="650" BorderBrush="White" OpacityMask="White" Foreground="White" Background="#FFECECEC" AllowsTransparency="True" WindowStyle="None">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="images/cube-1678974_640.png"/>
         </Grid.Background>
-        <Button x:Name="startButton" Content="Start" HorizontalAlignment="Left" Height="20" Margin="40,160,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <Button x:Name="quitButton" Content="Quit" Margin="262,160,155,0" VerticalAlignment="Top" Height="20" Click="quitButton_Click"/>
-        <Button x:Name="aboutButton" Content="About" Margin="377,160,40,0" VerticalAlignment="Top" Height="20" Click="aboutButton_Click"/>
-        <Button x:Name="scoresButton" Content="Scores" HorizontalAlignment="Left" Margin="155,160,0,0" VerticalAlignment="Top" Width="75" Click="scoresButton_Click" Height="20"/>
-        <Label x:Name="label" Content="TETRIS" Height="85" Margin="98,20,98,0" VerticalAlignment="Top" FontFamily="Broadway" FontWeight="Bold" FontSize="72"/>
+        <Button x:Name="startButton" Content="Start" HorizontalAlignment="Left" Height="50" Margin="500,173,0,123" VerticalAlignment="Center" Width="100" Click="button_Click" FontFamily="Broadway" FontStyle="Italic" FontWeight="Bold" Background="White" BorderBrush="#FF33F4FD" BorderThickness="5" FontSize="16" Foreground="#FF33F4FD"/>
+        <Button x:Name="quitButton" Content="Quit" Margin="350,175,0,121" VerticalAlignment="Center" Height="50" Click="quitButton_Click" FontFamily="Broadway" FontWeight="Bold" FontStyle="Italic" Background="White" HorizontalAlignment="Left" Width="100" BorderBrush="#FF33F4FD" BorderThickness="5" FontSize="16" Foreground="#FF33F4FD"/>
+        <Button x:Name="aboutButton" Content="About" Margin="200,176,0,120" VerticalAlignment="Center" Height="50" Click="aboutButton_Click" FontFamily="Broadway" FontStyle="Italic" FontWeight="Bold" Background="White" HorizontalAlignment="Left" Width="100" BorderBrush="#FF33F4FD" BorderThickness="5" FontSize="16" Foreground="#FF33F4FD"/>
+        <Button x:Name="scoresButton" Content="Scores" HorizontalAlignment="Left" Margin="50,175,0,121" VerticalAlignment="Center" Width="100" Click="scoresButton_Click" Height="50" FontFamily="Broadway" FontWeight="Bold" FontStyle="Italic" Background="White" BorderBrush="#FF33F4FD" BorderThickness="5" FontSize="16" Foreground="#FF33F4FD"/>
+        <Label x:Name="label" Content="TETRIS" Height="100" Margin="171,35,177,0" VerticalAlignment="Top" FontFamily="Broadway" FontWeight="Bold" FontSize="72" FontStyle="Italic" HorizontalAlignment="Center"/>
 
     </Grid>
 </Window>
