@@ -44,5 +44,13 @@ namespace Tetris
             // StartScreen.GetWindow();
             this.Hide();
         }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
+    }
     }
 }

@@ -42,7 +42,6 @@ namespace Tetris
         private void button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-
             // don't forget to prompt to save before closing 
         }
     }

@@ -42,5 +42,13 @@ namespace Tetris
         {
             this.Close();
         }
+
+        private void About_Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
+        }
     }
 }
