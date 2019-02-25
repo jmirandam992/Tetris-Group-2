@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Objects\Tile.cs" />
+    <Compile Include="Pause.xaml.cs">
+      <DependentUpon>Pause.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StartScreen.xaml.cs">
       <DependentUpon>StartScreen.xaml</DependentUpon>
     </Compile>
@@ -84,6 +88,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pause.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="StartScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,10 +124,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="images\Sources.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="images\cube-1678974_640.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\Sources.txt" />
+    <Folder Include="Game Objects\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\cube-1678974_640 - Copy - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sprites\Pallette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sprites\0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sprites\1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

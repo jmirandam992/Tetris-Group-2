@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tetris"
         mc:Ignorable="d"
-        Title="High Scores" Height="400" Width="650" AllowsTransparency="True" WindowStyle="None">
+        Title="High Scores" Height="600" Width="600" AllowsTransparency="True" WindowStyle="None" ResizeMode="CanResizeWithGrip">
     <Grid MouseDown="Grid_MouseDown">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="backButton" Content="Back" HorizontalAlignment="Left" Margin="268,255,0,0" VerticalAlignment="Top" Width="100" Click="backButton_Click" Background="White" BorderBrush="#FF33F4FD" Foreground="#FF33F4FD" BorderThickness="5" FontFamily="Broadway" FontWeight="Bold" FontStyle="Italic" Height="50"/>
-        <Label x:Name="label" Content="Top 10 High Scores" HorizontalAlignment="Left" Height="38" Margin="186,68,0,0" VerticalAlignment="Top" Width="284" FontFamily="Broadway" FontSize="24" FontWeight="Bold" FontStyle="Italic"/>
+        <Button x:Name="backButton" Content="Back" HorizontalAlignment="Left" Margin="250,256,0,0" VerticalAlignment="Top" Width="100" Click="backButton_Click" Background="White" BorderBrush="#FF33F4FD" Foreground="#FF33F4FD" BorderThickness="5" FontFamily="Broadway" FontWeight="Bold" FontStyle="Italic" Height="50"/>
+        <Label x:Name="label" Content="Top 10 High Scores" HorizontalAlignment="Left" Height="38" Margin="170,68,0,0" VerticalAlignment="Top" Width="284" FontFamily="Broadway" FontSize="24" FontWeight="Bold" FontStyle="Italic"/>
 
     </Grid>
 </Window>

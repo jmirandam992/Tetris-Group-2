@@ -44,7 +44,7 @@ namespace Tetris
             MainWindow newGame = new MainWindow();
             this.Visibility = Visibility.Collapsed;
             newGame.ShowDialog();
-            this.Visibility = Visibility.Visible;
+            this.Close();
         }
 
         /// <summary>
@@ -55,6 +55,7 @@ namespace Tetris
         private void quitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            System.Windows.Application.Current.Shutdown();
         }
 
         /// <summary>

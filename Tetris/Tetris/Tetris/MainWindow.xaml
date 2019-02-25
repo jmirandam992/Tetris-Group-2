@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tetris"
         mc:Ignorable="d"
-        Title="Tetris" Height="450" Width="525.205">
-    <Grid>
-        <Grid x:Name="gameBoard" HorizontalAlignment="Left" Height="400" Margin="257,10,0,0" VerticalAlignment="Top" Width="250">
+        Title="Tetris" Height="650" Width="650" AllowsTransparency="True" WindowStyle="None" ResizeMode="CanResizeWithGrip">
+    <Grid MouseDown="Grid_MouseDown">
+        <Grid x:Name="map" HorizontalAlignment="Left" Height="600" Margin="332,31,0,0" VerticalAlignment="Top" Width="300">
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="0"/>
@@ -15,7 +15,25 @@
                 </LinearGradientBrush>
             </Grid.Background>
         </Grid>
-        <Button x:Name="button" Content="Start Menu" HorizontalAlignment="Left" Margin="70,90,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <Rectangle x:Name="rctSidePanel" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="569" Stroke="Black" VerticalAlignment="Top" Width="292" IsEnabled="False" Margin="15,44,0,0" MouseDown="rctSidePanel_MouseDown"/>
+        <TextBlock x:Name="tbkHeader" HorizontalAlignment="Left" Height="65" TextWrapping="Wrap" Text="TETRIS" VerticalAlignment="Top" Width="292" Background="#FF33F4FD" Foreground="White" FontFamily="Broadway" FontWeight="Bold" FontStyle="Italic" FontSize="48" TextAlignment="Center" IsEnabled="False" Margin="15,44,0,0"/>
+        <Button x:Name="btnPause" Content="Pause" Height="30" Margin="61,146,0,0" VerticalAlignment="Top" BorderBrush="#FF33F4FD" BorderThickness="3" Foreground="#FF33F4FD" FontSize="16" FontWeight="Bold" Background="White" Width="200" Click="btnPause_Click" HorizontalAlignment="Left"/>
+        <Rectangle x:Name="recImageBackground" Fill="White" HorizontalAlignment="Left" Height="95" Margin="61,232,0,0" Stroke="#FF33F4FD" VerticalAlignment="Top" Width="200" StrokeThickness="3"/>
+        <Image x:Name="imgNextPiece" HorizontalAlignment="Left" Height="95" Margin="61,232,0,0" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
+        <Label x:Name="lblNextPiece" Content="Next Piece" HorizontalAlignment="Left" Height="31" Margin="112,201,0,0" VerticalAlignment="Top" Width="100" Foreground="#FF33F4FD" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Center" IsEnabled="False"/>
+        <Rectangle x:Name="rctStatBackground" Fill="White" HorizontalAlignment="Left" Height="134" Margin="61,371,0,0" Stroke="#FF33F4FD" StrokeThickness="3" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
+        <StackPanel x:Name="stckStatLabels" HorizontalAlignment="Left" Height="131" Margin="61,374,0,0" VerticalAlignment="Top" Width="100">
+            <Label x:Name="lblScore" Content="Score :" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="74" Margin="25,0,0,0" Height="32" IsEnabled="False"/>
+            <Label x:Name="lblLines" Content="Lines :" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="69" Margin="28,0,0,0" RenderTransformOrigin="0.883,0.573" Height="32" IsEnabled="False"/>
+            <Label x:Name="lblTime" Content="Time :" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="69" Margin="31,0,0,0" RenderTransformOrigin="0.883,0.573" Height="32" IsEnabled="False"/>
+            <Label x:Name="lblLevel" Content="Level :" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="70" Margin="30,0,0,0" Height="32" RenderTransformOrigin="0.883,0.573" IsEnabled="False"/>
+        </StackPanel>
+        <StackPanel x:Name="stckStatLabels_Copy" HorizontalAlignment="Left" Height="131" Margin="161,371,0,0" VerticalAlignment="Top" Width="100">
+            <Label x:Name="lblScoreOutput" Content="" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="100" Margin="0" Height="32" IsEnabled="False"/>
+            <Label x:Name="lblLinesOutput" Content="" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="100" Margin="0" Height="32" IsEnabled="False"/>
+            <Label x:Name="lblTimeOutput" Content="" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="100" Margin="0" Height="32" IsEnabled="False"/>
+            <Label x:Name="lblLevelOutput" Content="" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="100" Margin="0" Height="32" IsEnabled="False"/>
+        </StackPanel>
 
     </Grid>
 </Window>
