@@ -28,6 +28,7 @@ namespace Tetris
     /// </summary>
     public partial class MainWindow : Window
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindow"/> class.
         /// </summary>
@@ -61,6 +62,8 @@ namespace Tetris
         Tile player7 = new Tile();
         public MainWindow()
         {
+
+            
             InitializeComponent();
 
             DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
@@ -261,9 +264,27 @@ namespace Tetris
                 aCount++;
             }
 
-            //if (e.KeyCode == Keys.Down)
-            { }
+            if (e.Key == Key.Down)
+            {
+
+            }
+
+            if (e.Key == Key.Up)
+            {
+
+            }
+
+            if (e.Key == Key.Left)
+            {
+
+            }
+
+            if (e.Key == Key.Right)
+            {
+
+            }
         }
+
 
         private void btnPause_Click(object sender, RoutedEventArgs e)
         {
