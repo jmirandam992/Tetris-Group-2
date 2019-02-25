@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tetris"
         mc:Ignorable="d"
-        Title="About" Height="400" Width="650" AllowsTransparency="True" WindowStyle="None" MouseDown="About_Window_MouseDown">
+        Title="About" Height="600" Width="600" AllowsTransparency="True" WindowStyle="None" MouseDown="About_Window_MouseDown">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="backButton" Content="Back" VerticalAlignment="Top" Margin="276,274,274,0" Click="backButton_Click" BorderBrush="#FF33F4FD" Foreground="#FF33F4FD" BorderThickness="5" Background="White" FontFamily="Broadway" FontSize="16" FontWeight="Bold" FontStyle="Italic" Height="50"/>
-        <Label x:Name="label" Content="ABOUT TETRIS" HorizontalAlignment="Left" Height="41" Margin="226,36,0,0" Width="202" VerticalAlignment="Top" FontFamily="Broadway" FontSize="24" FontWeight="Bold" FontStyle="Italic"/>
+        <Button x:Name="backButton" Content="Back" VerticalAlignment="Top" Margin="250,274,250,0" Click="backButton_Click" BorderBrush="#FF33F4FD" Foreground="#FF33F4FD" BorderThickness="5" Background="White" FontFamily="Broadway" FontSize="16" FontWeight="Bold" FontStyle="Italic" Height="50"/>
+        <Label x:Name="label" Content="ABOUT TETRIS" HorizontalAlignment="Left" Height="41" Margin="201,37,0,0" Width="202" VerticalAlignment="Top" FontFamily="Broadway" FontSize="24" FontWeight="Bold" FontStyle="Italic"/>
 
     </Grid>
 </Window>
