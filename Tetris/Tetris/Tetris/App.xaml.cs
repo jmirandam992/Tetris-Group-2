@@ -1,9 +1,8 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="App.xaml.cs" company="CompanyName">
-//     Company copyright tag.
+// <copyright file="App.xaml.cs" company="Group 2">
+//     All Rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
-
 namespace Tetris
 {
     using System;

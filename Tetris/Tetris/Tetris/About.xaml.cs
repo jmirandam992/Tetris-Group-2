@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="About.xaml.cs" company="CompanyName">
-//     Company copyright tag.
+// <copyright file="About.xaml.cs" company="Group 2">
+//     All Rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 
@@ -34,6 +34,16 @@ namespace Tetris
         }
 
         /// <summary>
+        /// Header of the rules.
+        /// </summary>
+        private string head;
+
+        /// <summary>
+        /// Rules fo teh game.
+        /// </summary>
+        private string desc;
+
+        /// <summary>
         /// Back button click method
         /// </summary>
         /// <param name="sender"></param>
@@ -43,6 +53,9 @@ namespace Tetris
             this.Close();
         }
 
+        /// <summary>
+        /// To move the window around.
+        /// </summary>
         private void About_Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
