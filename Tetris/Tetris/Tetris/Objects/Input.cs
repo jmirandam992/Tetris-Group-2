@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Tile.cs" company="Group 2">
+// <copyright file="Input.cs" company="Group 2">
 //     All Rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
@@ -16,31 +16,31 @@ namespace Tron
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
     using System.Windows.Controls;
+    using System.Windows.Input;
 
     /// <summary>
-    /// The tile class that loads into grid.
+    /// All the key inputs.
     /// </summary>
-    public class Tile
+    public class Input
     {
         /// <summary>
-        /// Imgs used.
+        /// The up key.
         /// </summary>
-        public readonly string[] tiles = { "Sprites\\0.png", "Sprites\\1.png" };
+        public Key up;
 
         /// <summary>
-        /// What img is used.
+        /// The down key.
         /// </summary>
-        public int type;
+        public Key down;
 
         /// <summary>
-        /// Row.
+        /// The left key.
         /// </summary>
-        public int xPos;
+        public Key left;
 
         /// <summary>
-        /// Col.
+        /// The right key.
         /// </summary>
-        public int yPos;
-
+        public Key right;
     }
 }

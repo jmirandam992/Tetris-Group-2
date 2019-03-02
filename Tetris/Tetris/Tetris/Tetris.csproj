@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Objects\Input.cs" />
+    <Compile Include="Objects\SidePanel.cs" />
+    <Compile Include="Objects\Player.cs" />
     <Compile Include="Objects\Tile.cs" />
     <Compile Include="Pause.xaml.cs">
       <DependentUpon>Pause.xaml</DependentUpon>
@@ -129,9 +132,7 @@
   <ItemGroup>
     <Resource Include="images\cube-1678974_640.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Game Objects\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="images\cube-1678974_640 - Copy - Copy.png" />
   </ItemGroup>

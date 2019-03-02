@@ -1,46 +1,41 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Tile.cs" company="Group 2">
+// <copyright file="SidePanel.cs" company="Group 2">
 //     All Rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Tron
+namespace Tetris.Objects
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using System.Windows;
-    using System.Windows.Documents;
-    using System.Windows.Media;
-    using System.Windows.Media.Imaging;
-    using System.Windows.Controls;
 
     /// <summary>
-    /// The tile class that loads into grid.
+    /// Side panel data
     /// </summary>
-    public class Tile
+    class SidePanel
     {
         /// <summary>
-        /// Imgs used.
+        /// Level the player is on.
         /// </summary>
-        public readonly string[] tiles = { "Sprites\\0.png", "Sprites\\1.png" };
+        public int level;
 
         /// <summary>
-        /// What img is used.
+        /// Score the player's achieved.
+        /// </summary>
+        public int score;
+
+        /// <summary>
+        /// Time the player has played.
+        /// </summary>
+        public int time;
+
+        /// <summary>
+        /// Type of piece of the next Player.
         /// </summary>
         public int type;
-
-        /// <summary>
-        /// Row.
-        /// </summary>
-        public int xPos;
-
-        /// <summary>
-        /// Col.
-        /// </summary>
-        public int yPos;
 
     }
 }

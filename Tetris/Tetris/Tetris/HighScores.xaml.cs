@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="HighScores.xaml.cs" company="CompanyName">
-//     Company copyright tag.
+// <copyright file="HighScores.xaml.cs" company="Group 2">
+//     All Rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
 
@@ -45,6 +45,9 @@ namespace Tetris
             this.Hide();
         }
 
+        /// <summary>
+        /// To move the window around.
+        /// </summary>
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
