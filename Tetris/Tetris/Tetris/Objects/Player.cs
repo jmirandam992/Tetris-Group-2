@@ -1,5 +1,5 @@
-//-----------------------------------------------------------------------
-// <copyright file="controlX.cs" company="Group 2">
+﻿//-----------------------------------------------------------------------
+// <copyright file="Player.cs" company="Group 2">
 //     All Rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
@@ -12,7 +12,7 @@ namespace Tetris.Objects
     using System.Text;
     using System.Threading.Tasks;
 
-    class Player
+    public class Player
     {
         /// <summary>
         /// Control X position.
@@ -32,7 +32,7 @@ namespace Tetris.Objects
         /// <summary>
         /// 1Y
         /// </summary>
-        public int FirstY;
+        public int firstY;
 
         /// <summary>
         /// 2X
@@ -55,17 +55,7 @@ namespace Tetris.Objects
         public int thirdY;
 
         /// <summary>
-        /// 3X
-        /// </summary>
-        public int fourthX;
-
-        /// <summary>
-        /// 3Y
-        /// </summary>
-        public int fourthY;
-
-        /// <summary>
-        /// Chekcs if there is a controlX on the map.
+        /// Chekcs if there is a player on the map.
         /// </summary>
         public bool isActive;
 
@@ -84,111 +74,188 @@ namespace Tetris.Objects
         /// </summary>
         public int typeRight;
 
-
-        public void square(int controlX, int controlY, int secondX, int secondY, int thirdX, int thirdY, int fourthX, int fourthY)
+        /// <summary>
+        /// Checks which way it's fliped
+        /// </summary>
+        public int compass;
+        /// <summary>
+        /// Checks which way it's fliped
+        /// </summary>
+        public int type;
+        public void Long()
         {
-            this.controlX = 4;
+            this.type = 1;
+            this.compass = 0;
+            this.isActive = false;
+            
+            this.controlX = 3;
             this.controlY = 0;
-        
+
+            this.firstX = 4;
+            this.firstY = 0;
+
             this.secondX = 5;
             this.secondY = 0;
 
-            this.thirdX = 4;
-            this.thirdY = 1;
-
-            this.fourthX = 5;
-            this.fourthY = 1;
+            this.thirdX = 6;
+            this.thirdY = 0;
         }
-        public void iPiece(int controlX, int controlY, int secondX, int secondY, int thirdX, int thirdY, int fourthX, int fourthY)
+        public void square()
         {
- // I piece
-        this.controlX = 3;
-       this.controlY = 0;
+            this.type = 2;
+            this.compass = 0;
+            this.isActive = false;
 
-      this.secondX = 4;
-       this.secondY = 0;
-
-      this.thirdX = 5;
-      this.thirdY = 0;
-            
-       this.fourthX = 6;
-       this.fourthY = 0;
-        }
-        public void jPiece(int controlX, int controlY, int secondX, int secondY, int thirdX, int thirdY, int fourthX, int fourthY)
-        {
-            // I piece
             this.controlX = 3;
-            this.controlY = 0;
+            this.controlY = 1;
+
+            this.firstX = 3;
+            this.firstY = 0;
 
             this.secondX = 4;
-            this.secondY = 0;
-
-            this.thirdX = 5;
-            this.thirdY = 0;
-
-            this.fourthX = 5;
-            this.fourthY = 1;
-        }
-        public void lPiece(int controlX, int controlY, int secondX, int secondY, int thirdX, int thirdY, int fourthX, int fourthY)
-        {
-            // I piece
-            this.controlX = 3;
-            this.controlY = 0;
-
-            this.secondX = 3;
             this.secondY = 1;
 
             this.thirdX = 4;
             this.thirdY = 0;
-
-            this.fourthX = 5;
-            this.fourthY = 0;
         }
-
-        public void sPiece(int controlX, int controlY, int secondX, int secondY, int thirdX, int thirdY, int fourthX, int fourthY)
+        public void Pyramid()
         {
-            // I piece
+            this.type = 3;
+            this.compass = 0;
+            this.isActive = false;
+
+            this.controlX = 3;
+            this.controlY = 0;
+
+            this.firstX = 4;
+            this.firstY = 1;
+
+            this.secondX = 4;
+            this.secondY = 0;
+
+            this.thirdX = 5;
+            this.thirdY = 0;
+        }
+        public void smLeft()
+        {
+            this.type = 4;
+            this.compass = 0;
+            this.isActive = false;
+
             this.controlX = 3;
             this.controlY = 1;
 
-            this.secondX = 4;
-            this.secondY = 0;
-
-            this.thirdX = 5;
-            this.thirdY = 0;
-
-            this.fourthX = 5;
-            this.fourthY = 1;
-        }
-        public void tPiece(int controlX, int controlY, int secondX, int secondY, int thirdX, int thirdY, int fourthX, int fourthY)
-        {
-            // I piece
-            this.controlX = 3;
-            this.controlY = 0;
+            this.firstX = 4;
+            this.firstY = 1;
 
             this.secondX = 4;
             this.secondY = 0;
 
             this.thirdX = 5;
             this.thirdY = 0;
-
-            this.fourthX = 4;
-            this.fourthY = 1;
         }
-        public void zPiece(int controlX, int controlY, int secondX, int secondY, int thirdX, int thirdY, int fourthX, int fourthY)
+        public void smRight()
         {
-            // I piece
+            this.type = 5;
+            this.compass = 0;
+            this.isActive = false;
+
             this.controlX = 3;
             this.controlY = 0;
+
+            this.firstX = 4;
+            this.firstY = 1;
 
             this.secondX = 4;
             this.secondY = 0;
 
-            this.thirdX = 4;
+            this.thirdX = 5;
             this.thirdY = 1;
-
-            this.fourthX = 5;
-            this.fourthY = 1;
         }
+        public void Left()
+        {
+            this.type = 6;
+            this.compass = 0;
+            this.isActive = false;
+
+            this.controlX = 3;
+            this.controlY = 1;
+
+            this.firstX = 3;
+            this.firstY = 0;
+
+            this.secondX = 4;
+            this.secondY = 0;
+
+            this.thirdX = 5;
+            this.thirdY = 0;
+        }
+        public void Right()
+        {
+            this.type = 7;
+            this.compass = 0;
+            this.isActive = false;
+
+            this.controlX = 3;
+            this.controlY = 0;
+
+            this.firstX = 4;
+            this.firstY = 0;
+
+            this.secondX = 5;
+            this.secondY = 1;
+
+            this.thirdX = 5;
+            this.thirdY = 0;
+        }
+
+        public void randomPlayer(int part)
+        {
+            if (part == 0)
+            {
+                this.Long();
+            }
+            if (part == 1)
+            {
+                this.square();
+            }
+            if (part == 2)
+            {
+                this.Pyramid();
+            }
+            if (part == 3)
+            {
+                this.smLeft();
+            }
+            if (part == 4)
+            {
+                this.smRight();
+            }
+            if (part == 5)
+            {
+                this.Left();
+            }
+            if (part == 6)
+            {
+                this.Right();
+            }
+        }
+
+        public void Update(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4)
+        {
+            this.controlX = x1;
+            this.controlY = y1;
+            this.firstX = x2;
+            this.firstY = y2;
+            this.secondX = x3;
+            this.secondY = y3;
+            this.thirdX = x4;
+            this.thirdY = y4;
+        }
+        public void ShiftLeft()
+        {
+            
+        }
+    
     }
 }

@@ -15,11 +15,11 @@
                 </LinearGradientBrush>
             </Grid.Background>
         </Grid>
-        <Rectangle x:Name="rctSidePanel" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="569" Stroke="Black" VerticalAlignment="Top" Width="292" IsEnabled="False" Margin="15,44,0,0" MouseDown="rctSidePanel_MouseDown"/>
-        <TextBlock x:Name="tbkHeader" HorizontalAlignment="Left" Height="65" TextWrapping="Wrap" Text="TETRIS" VerticalAlignment="Top" Width="292" Background="#FF33F4FD" Foreground="White" FontFamily="Broadway" FontWeight="Bold" FontStyle="Italic" FontSize="48" TextAlignment="Center" IsEnabled="False" Margin="15,44,0,0"/>
+        <Rectangle x:Name="rctSidePanel" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="600" Stroke="Black" VerticalAlignment="Top" Width="292" IsEnabled="False" Margin="15,31,0,0" MouseDown="rctSidePanel_MouseDown"/>
+        <TextBlock x:Name="tbkHeader" HorizontalAlignment="Left" Height="78" TextWrapping="Wrap" Text="TETRIS" VerticalAlignment="Top" Width="292" Background="#FF33F4FD" Foreground="White" FontFamily="Broadway" FontWeight="Bold" FontStyle="Italic" FontSize="48" TextAlignment="Center" IsEnabled="False" Margin="15,31,0,0"/>
         <Button x:Name="btnPause" Content="Pause" Height="30" Margin="61,146,0,0" VerticalAlignment="Top" BorderBrush="#FF33F4FD" BorderThickness="3" Foreground="#FF33F4FD" FontSize="16" FontWeight="Bold" Background="White" Width="200" Click="btnPause_Click" HorizontalAlignment="Left"/>
-        <Rectangle x:Name="recImageBackground" Fill="White" HorizontalAlignment="Left" Height="95" Margin="61,232,0,0" Stroke="#FF33F4FD" VerticalAlignment="Top" Width="200" StrokeThickness="3"/>
-        <Image x:Name="imgNextPiece" HorizontalAlignment="Left" Height="95" Margin="61,232,0,0" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
+        <Rectangle x:Name="recImageBackground" Fill="White" HorizontalAlignment="Left" Height="120" Margin="81,232,0,0" Stroke="#FF33F4FD" VerticalAlignment="Top" Width="160" StrokeThickness="3"/>
+        <Image x:Name="imgNextPiece" HorizontalAlignment="Left" Height="120" Margin="81,232,0,0" VerticalAlignment="Top" Width="160" IsEnabled="False"/>
         <Label x:Name="lblNextPiece" Content="Next Piece" HorizontalAlignment="Left" Height="31" Margin="112,201,0,0" VerticalAlignment="Top" Width="100" Foreground="#FF33F4FD" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Center" IsEnabled="False"/>
         <Rectangle x:Name="rctStatBackground" Fill="White" HorizontalAlignment="Left" Height="134" Margin="61,371,0,0" Stroke="#FF33F4FD" StrokeThickness="3" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
         <StackPanel x:Name="stckStatLabels" HorizontalAlignment="Left" Height="131" Margin="61,374,0,0" VerticalAlignment="Top" Width="100">

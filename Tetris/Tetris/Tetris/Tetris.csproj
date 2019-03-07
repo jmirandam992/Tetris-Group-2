@@ -132,7 +132,9 @@
   <ItemGroup>
     <Resource Include="images\cube-1678974_640.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Sprites\3.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="images\cube-1678974_640 - Copy - Copy.png" />
   </ItemGroup>
@@ -140,10 +142,34 @@
     <Resource Include="Sprites\Pallette.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Sprites\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sprites\4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sprites\6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sprites\5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sprites\2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sprites\7.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Sprites\0.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Sprites\1.png" />
+    <Resource Include="Sprites\next1.png" />
+    <Resource Include="Sprites\next2.png" />
+    <Resource Include="Sprites\next3.png" />
+    <Resource Include="Sprites\next4.png" />
+    <Resource Include="Sprites\next5.png" />
+    <Resource Include="Sprites\next6.png" />
+    <Resource Include="Sprites\next7.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

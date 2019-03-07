@@ -10,8 +10,18 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="backButton" Content="Back" HorizontalAlignment="Left" Margin="250,256,0,0" VerticalAlignment="Top" Width="100" Click="backButton_Click" Background="White" BorderBrush="#FF33F4FD" Foreground="#FF33F4FD" BorderThickness="5" FontFamily="Broadway" FontWeight="Bold" FontStyle="Italic" Height="50"/>
-        <Label x:Name="label" Content="Top 10 High Scores" HorizontalAlignment="Left" Height="38" Margin="170,68,0,0" VerticalAlignment="Top" Width="284" FontFamily="Broadway" FontSize="24" FontWeight="Bold" FontStyle="Italic"/>
+        <Button x:Name="backButton" Content="Back" HorizontalAlignment="Left" Margin="250,505,0,0" VerticalAlignment="Top" Width="100" Click="backButton_Click" Background="White" BorderBrush="#FF33F4FD" Foreground="#FF33F4FD" BorderThickness="5" FontFamily="Broadway" FontWeight="Bold" FontStyle="Italic" Height="50"/>
+        <Label x:Name="lblHeader" Content="Top 10 High Scores" HorizontalAlignment="Left" Height="38" Margin="170,68,0,0" VerticalAlignment="Top" Width="284" FontFamily="Broadway" FontSize="24" FontWeight="Bold" FontStyle="Italic" Foreground="#FF33F4FD"/>
+        <Label x:Name="lbl1st" Content="1st" HorizontalAlignment="Left" Height="38" Margin="60,111,0,0" VerticalAlignment="Top" Width="474" FontFamily="Broadway" FontSize="24" FontWeight="Bold" FontStyle="Italic" Foreground="#FF33F4FD"/>
+        <Label x:Name="lbl2nd" Content="2nd" HorizontalAlignment="Left" Height="38" Margin="60,149,0,0" VerticalAlignment="Top" Width="474" FontFamily="Broadway" FontSize="24" FontWeight="Bold" FontStyle="Italic" Foreground="#FF33F4FD"/>
+        <Label x:Name="lbl3rd" Content="3rd" HorizontalAlignment="Left" Height="38" Margin="60,187,0,0" VerticalAlignment="Top" Width="474" FontFamily="Broadway" FontSize="24" FontWeight="Bold" FontStyle="Italic" Foreground="#FF33F4FD"/>
+        <Label x:Name="lbl4th" Content="4th" HorizontalAlignment="Left" Height="38" Margin="60,225,0,0" VerticalAlignment="Top" Width="474" FontFamily="Broadway" FontSize="24" FontWeight="Bold" FontStyle="Italic" Foreground="#FF33F4FD"/>
+        <Label x:Name="lbl5th" Content="5th" HorizontalAlignment="Left" Height="38" Margin="60,263,0,0" VerticalAlignment="Top" Width="474" FontFamily="Broadway" FontSize="24" FontWeight="Bold" FontStyle="Italic" Foreground="#FF33F4FD"/>
+        <Label x:Name="lbl6th" Content="6th" HorizontalAlignment="Left" Height="38" Margin="60,301,0,0" VerticalAlignment="Top" Width="474" FontFamily="Broadway" FontSize="24" FontWeight="Bold" FontStyle="Italic" Foreground="#FF33F4FD"/>
+        <Label x:Name="lbl7th" Content="7th" HorizontalAlignment="Left" Height="38" Margin="60,339,0,0" VerticalAlignment="Top" Width="474" FontFamily="Broadway" FontSize="24" FontWeight="Bold" FontStyle="Italic" Foreground="#FF33F4FD"/>
+        <Label x:Name="lbl8th" Content="8th" HorizontalAlignment="Left" Height="38" Margin="60,377,0,0" VerticalAlignment="Top" Width="474" FontFamily="Broadway" FontSize="24" FontWeight="Bold" FontStyle="Italic" Foreground="#FF33F4FD"/>
+        <Label x:Name="lbl9th" Content="9th" HorizontalAlignment="Left" Height="38" Margin="60,415,0,0" VerticalAlignment="Top" Width="474" FontFamily="Broadway" FontSize="24" FontWeight="Bold" FontStyle="Italic" Foreground="#FF33F4FD"/>
+        <Label x:Name="lbl10th" Content="10th" HorizontalAlignment="Left" Height="38" Margin="60,453,0,0" VerticalAlignment="Top" Width="474" FontFamily="Broadway" FontSize="24" FontWeight="Bold" FontStyle="Italic" Foreground="#FF33F4FD"/>
 
     </Grid>
 </Window>

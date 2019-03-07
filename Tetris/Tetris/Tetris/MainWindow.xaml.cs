@@ -6,6 +6,7 @@
 
 namespace Tetris
 {
+    using Objects;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -21,26 +22,94 @@ namespace Tetris
     using System.Windows.Navigation;
     using System.Windows.Shapes;
     using System.Windows.Threading;
-    using Tron;
+    using Tetris;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Variables used.
+        /// </summary>
+        public Tile[,] grid = new Tile[10, 20];
+        Player player = new Player();
+        Input playerControl = new Input();
+        Random rdm = new Random();
+        private int newPartCnt = 0;
+        private string[] next = { "Sprites\\next1.png", "Sprites\\next2.png", "Sprites\\next3.png", "Sprites\\next4.png", "Sprites\\next5.png", "Sprites\\next6.png", "Sprites\\next7.png" };
+
+        // Stats:
+        public int nextPart;
+        public int lineCnt = 0;
+        public int speed = 0;
+        public int score = 0;
 
         /// <summary>
         /// Refresher to simulate gravity.
         /// </summary>
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            // Refresher
+            if (!(grid[3, 0].type != 0 || grid[4, 0].type != 0 || grid[5, 0].type != 0 || grid[3, 1].type != 0 ||
+                  grid[4, 1].type != 0 || grid[5, 1].type != 0))
+            {
+                if (player.isActive == true)
+                {
+                    playerControl.Bounds(2, player, grid, map);
+                }
+                else
+                {
+                    if (newPartCnt == 0)
+                    {
+                        List<int> lines = playerControl.LineCheck(grid, map);
+                        lineCnt += lines.Count;
+                        if (lines.Count < 3)
+                        {
+                            score += (lines.Count * 100);
+                        }
+
+                        if (lines.Count == 3)
+                        {
+                            score += 400;
+                        }
+
+                        if (lines.Count == 4)
+                        {
+                            score += 800;
+                        }
+
+                        lblLinesOutput.Content = lineCnt.ToString();
+                        lblScoreOutput.Content = score.ToString();
+                    }
+
+                    if (newPartCnt == 1)
+                    {
+                        player.randomPlayer(nextPart);
+                        playerControl.generate(player, grid, map);
+                        nextPart = rdm.Next(7);
+                        imgNextPiece.Source = new BitmapImage(new Uri(next[nextPart], UriKind.Relative));
+                    }
+
+                    newPartCnt++;
+                    if (newPartCnt == 2)
+                    {
+                        newPartCnt = 0;
+                    }
+                }
+            }
+            else
+            {
+                if (player.isActive == true)
+                {
+                    playerControl.Bounds(2, player, grid, map);
+                }
+            }
         }
 
         /// <summary>
         /// Change the img of a tile.
         /// </summary>
-        void imgChange(int x, int y)
+        public void imgChange(int x, int y)
         {
             Image im = new Image();
             im.Source = new BitmapImage(new Uri(grid[x, y].tiles[grid[x, y].type], UriKind.Relative));
@@ -49,18 +118,6 @@ namespace Tetris
 
             map.Children.Add(im);
         }
-
-        /// <summary>
-        /// Variables used.
-        /// </summary>
-        Tile[,] grid = new Tile[10, 20];
-        Tile player = new Tile();
-        Tile player2 = new Tile();
-        Tile player3 = new Tile();
-        Tile player4 = new Tile();
-        Tile player5 = new Tile();
-        Tile player6 = new Tile();
-        Tile player7 = new Tile();
 
         /// <summary>
         /// Loads the main window and the gameboard
@@ -104,71 +161,11 @@ namespace Tetris
                     imgChange(r, c);
                 }
             }
-
-            //All the player positions
-            player.xPos = 3;
-            player.yPos = 3;
-
-            player2.xPos = 5;
-            player2.yPos = 3;
-
-            player3.xPos = 2;
-            player3.yPos = 5;
-
-            player4.xPos = 3;
-            player4.yPos = 6;
-
-            player5.xPos = 4;
-            player5.yPos = 6;
-
-            player6.xPos = 5;
-            player6.yPos = 6;
-
-            player7.xPos = 6;
-            player7.yPos = 5;
-
-            // Var
-            int x = player.xPos;
-            int y = player.yPos;
-            // Change img
-            grid[x, y].type = 1;
-            imgChange(x, y);
-
-            x = player2.xPos;
-            y = player2.yPos;
-            // Change img
-            grid[x, y].type = 1;
-            imgChange(x, y);
-
-            x = player3.xPos;
-            y = player3.yPos;
-            // Change img
-            grid[x, y].type = 1;
-            imgChange(x, y);
-
-            x = player4.xPos;
-            y = player4.yPos;
-            // Change img
-            grid[x, y].type = 1;
-            imgChange(x, y);
-
-            x = player5.xPos;
-            y = player5.yPos;
-            // Change img
-            grid[x, y].type = 1;
-            imgChange(x, y);
-
-            x = player6.xPos;
-            y = player6.yPos;
-            // Change img
-            grid[x, y].type = 1;
-            imgChange(x, y);
-
-            x = player7.xPos;
-            y = player7.yPos;
-            // Change img
-            grid[x, y].type = 1;
-            imgChange(x, y);
+            nextPart = rdm.Next(7);
+            player.randomPlayer(nextPart);
+            playerControl.generate(player, grid, map);
+            nextPart = rdm.Next(7);
+            imgNextPiece.Source = new BitmapImage(new Uri(next[nextPart], UriKind.Relative));
         }
 
         /// <summary>
@@ -187,259 +184,14 @@ namespace Tetris
         /// </summary>
         protected override void OnKeyDown(KeyEventArgs e)
         {
-            if (e.Key == Key.Down)
-            {
-                if (player.yPos < 16)
-                {
-                    // Player1
-                    int beforeY = player.yPos;
-                    player.yPos = beforeY + 1;
-                    int x = player.xPos;
-                    int y = player.yPos;
-
-                    grid[x, beforeY].type = 0;
-                    imgChange(x, beforeY);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player2
-                    beforeY = player2.yPos;
-                    player2.yPos = beforeY + 1;
-                    x = player2.xPos;
-                    y = player2.yPos;
-
-                    grid[x, beforeY].type = 0;
-                    imgChange(x, beforeY);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player3
-                    beforeY = player3.yPos;
-                    player3.yPos = beforeY + 1;
-                    x = player3.xPos;
-                    y = player3.yPos;
-
-                    grid[x, beforeY].type = 0;
-                    imgChange(x, beforeY);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player4
-                    beforeY = player4.yPos;
-                    player4.yPos = beforeY + 1;
-                    x = player4.xPos;
-                    y = player4.yPos;
-
-                    grid[x, beforeY].type = 0;
-                    imgChange(x, beforeY);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player5
-                    beforeY = player5.yPos;
-                    player5.yPos = beforeY + 1;
-                    x = player5.xPos;
-                    y = player5.yPos;
-
-                    grid[x, beforeY].type = 0;
-                    imgChange(x, beforeY);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player3
-                    beforeY = player6.yPos;
-                    player6.yPos = beforeY + 1;
-                    x = player6.xPos;
-                    y = player6.yPos;
-
-                    grid[x, beforeY].type = 0;
-                    imgChange(x, beforeY);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player3
-                    beforeY = player7.yPos;
-                    player7.yPos = beforeY + 1;
-                    x = player7.xPos;
-                    y = player7.yPos;
-
-                    grid[x, beforeY].type = 0;
-                    imgChange(x, beforeY);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-                }
-            }
+            
 
             /// <summary>
             /// Up key press code.
             /// </summary>
             if (e.Key == Key.Up)
             {
-                if (player.yPos > 0)
-                {
-                    // Player1
-                    int beforeY = player.yPos;
-                    player.yPos = beforeY - 1;
-                    int x = player.xPos;
-                    int y = player.yPos;
-
-                    grid[x, beforeY].type = 0;
-                    imgChange(x, beforeY);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player2
-                    beforeY = player2.yPos;
-                    player2.yPos = beforeY - 1;
-                    x = player2.xPos;
-                    y = player2.yPos;
-
-                    grid[x, beforeY].type = 0;
-                    imgChange(x, beforeY);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player3
-                    beforeY = player3.yPos;
-                    player3.yPos = beforeY - 1;
-                    x = player3.xPos;
-                    y = player3.yPos;
-
-                    grid[x, beforeY].type = 0;
-                    imgChange(x, beforeY);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player4
-                    beforeY = player4.yPos;
-                    player4.yPos = beforeY - 1;
-                    x = player4.xPos;
-                    y = player4.yPos;
-
-                    grid[x, beforeY].type = 0;
-                    imgChange(x, beforeY);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player5
-                    beforeY = player5.yPos;
-                    player5.yPos = beforeY - 1;
-                    x = player5.xPos;
-                    y = player5.yPos;
-
-                    grid[x, beforeY].type = 0;
-                    imgChange(x, beforeY);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player3
-                    beforeY = player6.yPos;
-                    player6.yPos = beforeY - 1;
-                    x = player6.xPos;
-                    y = player6.yPos;
-
-                    grid[x, beforeY].type = 0;
-                    imgChange(x, beforeY);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player3
-                    beforeY = player7.yPos;
-                    player7.yPos = beforeY - 1;
-                    x = player7.xPos;
-                    y = player7.yPos;
-
-                    grid[x, beforeY].type = 0;
-                    imgChange(x, beforeY);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-                }
-            }
-
-            /// <summary>
-            /// Left key press code.
-            /// </summary>
-            if (e.Key == Key.Left)
-            {
-                if (player.xPos > 1)
-                {
-                    // Player1
-                    int beforeX = player.xPos;
-                    player.xPos = beforeX - 1;
-                    int x = player.xPos;
-                    int y = player.yPos;
-
-                    grid[beforeX, y].type = 0;
-                    imgChange(beforeX, y);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player2
-                    beforeX = player2.xPos;
-                    player2.xPos = beforeX - 1;
-                    x = player2.xPos;
-                    y = player2.yPos;
-
-                    grid[beforeX, y].type = 0;
-                    imgChange(beforeX, y);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player3
-                    beforeX = player3.xPos;
-                    player3.xPos = beforeX - 1;
-                    x = player3.xPos;
-                    y = player3.yPos;
-
-                    grid[beforeX, y].type = 0;
-                    imgChange(beforeX, y);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player4
-                    beforeX = player4.xPos;
-                    player4.xPos = beforeX - 1;
-                    x = player4.xPos;
-                    y = player4.yPos;
-
-                    grid[beforeX, y].type = 0;
-                    imgChange(beforeX, y);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player5
-                    beforeX = player5.xPos;
-                    player5.xPos = beforeX - 1;
-                    x = player5.xPos;
-                    y = player5.yPos;
-
-                    grid[beforeX, y].type = 0;
-                    imgChange(beforeX, y);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player3
-                    beforeX = player6.xPos;
-                    player6.xPos = beforeX - 1;
-                    x = player6.xPos;
-                    y = player6.yPos;
-
-                    grid[beforeX, y].type = 0;
-                    imgChange(beforeX, y);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player3
-                    beforeX = player7.xPos;
-                    player7.xPos = beforeX - 1;
-                    x = player7.xPos;
-                    y = player7.yPos;
-
-                    grid[beforeX, y].type = 0;
-                    imgChange(beforeX, y);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-                }
+                playerControl.Bounds(0, player, grid, map);
             }
 
             /// <summary>
@@ -447,85 +199,23 @@ namespace Tetris
             /// </summary>
             if (e.Key == Key.Right)
             {
-                if (player.xPos < 6)
-                {
-                    // Player1
-                    int beforeX = player.xPos;
-                    player.xPos = beforeX + 1;
-                    int x = player.xPos;
-                    int y = player.yPos;
+                playerControl.Bounds(1, player, grid, map);
+            }
 
-                    grid[beforeX, y].type = 0;
-                    imgChange(beforeX, y);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
+            /// <summary>
+            /// Down key press code.
+            /// </summary>
+            if (e.Key == Key.Down)
+            {
+                playerControl.Bounds(2, player, grid, map);
+            }
 
-                    // Player2
-                    beforeX = player2.xPos;
-                    player2.xPos = beforeX + 1;
-                    x = player2.xPos;
-                    y = player2.yPos;
-
-                    grid[beforeX, y].type = 0;
-                    imgChange(beforeX, y);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player3
-                    beforeX = player3.xPos;
-                    player3.xPos = beforeX + 1;
-                    x = player3.xPos;
-                    y = player3.yPos;
-
-                    grid[beforeX, y].type = 0;
-                    imgChange(beforeX, y);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player4
-                    beforeX = player4.xPos;
-                    player4.xPos = beforeX + 1;
-                    x = player4.xPos;
-                    y = player4.yPos;
-
-                    grid[beforeX, y].type = 0;
-                    imgChange(beforeX, y);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player5
-                    beforeX = player5.xPos;
-                    player5.xPos = beforeX + 1;
-                    x = player5.xPos;
-                    y = player5.yPos;
-
-                    grid[beforeX, y].type = 0;
-                    imgChange(beforeX, y);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player6
-                    beforeX = player6.xPos;
-                    player6.xPos = beforeX + 1;
-                    x = player6.xPos;
-                    y = player6.yPos;
-
-                    grid[beforeX, y].type = 0;
-                    imgChange(beforeX, y);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-
-                    // Player7
-                    beforeX = player7.xPos;
-                    player7.xPos = beforeX + 1;
-                    x = player7.xPos;
-                    y = player7.yPos;
-
-                    grid[beforeX, y].type = 0;
-                    imgChange(beforeX, y);
-                    grid[x, y].type = 1;
-                    imgChange(x, y);
-                }
+            /// <summary>
+            /// Left key press code.
+            /// </summary>
+            if (e.Key == Key.Left)
+            {
+                playerControl.Bounds(3, player, grid, map);
             }
         }
 
