@@ -1,0 +1,31 @@
+﻿<Window x:Name="WnwPause" x:Class="Tetris.Pause"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tetris"
+        mc:Ignorable="d"
+        Title="Pause" Height="500" Width="500" AllowsTransparency="True" WindowStyle="None" ResizeMode="CanResizeWithGrip">
+    <Grid x:Name="grdPauseLayout" Background="#FFF4F4F5" MouseDown="grdPauseLayout_MouseDown">
+        <Button x:Name="btnResume" Content="Resume" Height="30" Margin="146,89,146,0" VerticalAlignment="Top" BorderBrush="#FF33F4FD" BorderThickness="3" Foreground="#FF33F4FD" FontSize="16" FontWeight="Bold" Background="White" Width="200"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="61" TextWrapping="Wrap" Text="Pause" VerticalAlignment="Top" Width="492" Foreground="White" Background="#FF33F4FD" FontWeight="Bold" FontStyle="Italic" FontFamily="Broadway" FontSize="48" TextAlignment="Center"/>
+        <Button x:Name="btnReset" Content="Reset" Height="30" Margin="146,140,146,0" VerticalAlignment="Top" BorderBrush="#FF33F4FD" BorderThickness="3" Foreground="#FF33F4FD" FontSize="16" FontWeight="Bold" Background="White" Width="200" Click="btnReset_Click"/>
+        <Button x:Name="btnQuit" Content="Quit" Height="30" Margin="146,191,146,0" VerticalAlignment="Top" BorderBrush="#FF33F4FD" BorderThickness="3" Foreground="#FF33F4FD" FontSize="16" FontWeight="Bold" Background="White" Width="200" Click="btnQuit_Click"/>
+        <Button x:Name="btnResume1" Content="Resume" Height="30" Margin="146,89,146,0" VerticalAlignment="Top" BorderBrush="#FF33F4FD" BorderThickness="3" Foreground="#FF33F4FD" FontSize="16" FontWeight="Bold" Background="White" Width="200" Click="btnResume1_Click"/>
+        <Rectangle x:Name="rctStatBackground" Fill="White" HorizontalAlignment="Left" Height="134" Margin="146,290,0,0" Stroke="#FF33F4FD" StrokeThickness="3" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
+        <StackPanel x:Name="stckStatLabels" HorizontalAlignment="Left" Height="131" Margin="146,290,0,0" VerticalAlignment="Top" Width="100">
+            <Label x:Name="lblScore" Content="Score :" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="74" Margin="25,0,0,0" Height="32" IsEnabled="False"/>
+            <Label x:Name="lblLines" Content="Lines :" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="69" Margin="28,0,0,0" RenderTransformOrigin="0.883,0.573" Height="32" IsEnabled="False"/>
+            <Label x:Name="lblTime" Content="Time :" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="69" Margin="31,0,0,0" RenderTransformOrigin="0.883,0.573" Height="32" IsEnabled="False"/>
+            <Label x:Name="lblLevel" Content="Level :" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="70" Margin="30,0,0,0" Height="32" RenderTransformOrigin="0.883,0.573" IsEnabled="False"/>
+        </StackPanel>
+        <StackPanel x:Name="stckStatLabels_Copy" HorizontalAlignment="Left" Height="131" Margin="246,290,0,0" VerticalAlignment="Top" Width="100">
+            <Label x:Name="lblScoreOutput" Content="" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="100" Margin="0" Height="32" IsEnabled="False"/>
+            <Label x:Name="lblLinesOutput" Content="" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="100" Margin="0" Height="32" IsEnabled="False"/>
+            <Label x:Name="lblTimeOutput" Content="" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="100" Margin="0" Height="32" IsEnabled="False"/>
+            <Label x:Name="lblLevelOutput" Content="" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="100" Margin="0" Height="32" IsEnabled="False"/>
+        </StackPanel>
+        <Label x:Name="lblPauseStats" Content="Stats" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="219,256,0,0" Foreground="#FF33F4FD" FontSize="18" FontWeight="Bold"/>
+
+    </Grid>
+</Window>
