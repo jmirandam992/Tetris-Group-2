@@ -214,7 +214,7 @@ namespace Tetris
 
                         if (player.type == 7)
                         {
-                            if (y < 19 && grid[x, (y + 1)].type == 0 && grid[(x + 1), (y + 1)].type == 0 && grid[(x - 1), (y - 1)].type == 0)
+                            if (yy > 0 && y < 19 && grid[x, (y + 1)].type == 0 && grid[(x + 1), (y + 1)].type == 0 && grid[(x - 1), (y - 1)].type == 0)
                             {
                                 grid[x, y].type = 0;
                                 grid[xxx, yyy].type = 0;

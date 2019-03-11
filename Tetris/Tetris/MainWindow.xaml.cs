@@ -4,6 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System.Media;
+
 namespace Tetris
 {
     using System;
@@ -29,6 +31,7 @@ namespace Tetris
     /// </summary>
     public partial class MainWindow : Window
     {
+
         /// <summary>
         /// Variables used.
         /// </summary>
@@ -42,12 +45,12 @@ namespace Tetris
         /// <summary>
         /// New Input for Player Control
         /// </summary>
-       private Input playerControl = new Input();
-        
+        private Input playerControl = new Input();
+
         /// <summary>
         /// New random piece
         /// </summary>
-       private Random rdm = new Random();
+        private Random rdm = new Random();
 
         /// <summary>
         /// Create new Part Count
@@ -57,13 +60,17 @@ namespace Tetris
         /// <summary>
         /// Create Sprite Array
         /// </summary>
-        private string[] next = { "Sprites\\next1.png", "Sprites\\next2.png", "Sprites\\next3.png", "Sprites\\next4.png", "Sprites\\next5.png", "Sprites\\next6.png", "Sprites\\next7.png" };
+        private string[] next =
+        {
+            "Sprites\\next1.png", "Sprites\\next2.png", "Sprites\\next3.png", "Sprites\\next4.png",
+            "Sprites\\next5.png", "Sprites\\next6.png", "Sprites\\next7.png"
+        };
 
         /// <summary>
         /// Dispatcher timer for game tick
         /// </summary>
         private DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-        
+
         /// <summary>
         /// Initiate next piece
         /// </summary>
@@ -92,7 +99,8 @@ namespace Tetris
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
             // top collision detection
-            if (!(this.grid[3, 0].type != 0 || this.grid[4, 0].type != 0 || this.grid[5, 0].type != 0 || this.grid[3, 1].type != 0 ||
+            if (!(this.grid[3, 0].type != 0 || this.grid[4, 0].type != 0 || this.grid[5, 0].type != 0 ||
+                  this.grid[3, 1].type != 0 ||
                   this.grid[4, 1].type != 0 || this.grid[5, 1].type != 0))
             {
                 if (this.player.isActive == true)
@@ -163,22 +171,40 @@ namespace Tetris
         }
 
         /// <summary>
-        /// Loads the main window and the gameboard
+        /// use this to set the difficulty for the game 
         /// </summary>
-        public MainWindow()
+        /// <param name="milliseconds"></param>
+        public MainWindow(int milliseconds)
         {
+
             InitializeComponent();
 
-            InitiateGame();
+            InitiateGame(milliseconds);
+            initializeSound();
 
-            // Load the refresher
-          
+
         }
 
-        private void InitiateGame()
+        private void initializeSound()
+        {
+            
+        
+            System.IO.Stream str = Properties.Resources.Tetris1;
+            System.Media.SoundPlayer music = new SoundPlayer(str);
+            music.Play();
+            bool soundFinished = true;
+
+            if (soundFinished)
+            {
+                soundFinished = false;
+                Task.Factory.StartNew(() =>{ music.PlaySync(); soundFinished = true;});
+            }
+        }
+
+    private void InitiateGame(int milliseconds)
         {
             dispatcherTimer.Tick += DispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, milliseconds);
             dispatcherTimer.Start();
 
             int nRows = grid.GetLength(1);

@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Difficulty.xaml.cs">
+      <DependentUpon>Difficulty.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Objects\Input.cs" />
     <Compile Include="Objects\SidePanel.cs" />
     <Compile Include="Objects\Player.cs" />
@@ -62,12 +65,21 @@
     <Compile Include="Pause.xaml.cs">
       <DependentUpon>Pause.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="StartScreen.xaml.cs">
       <DependentUpon>StartScreen.xaml</DependentUpon>
     </Compile>
     <Page Include="About.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Difficulty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HighScores.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -103,11 +115,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -170,6 +177,9 @@
     <Resource Include="Sprites\next5.png" />
     <Resource Include="Sprites\next6.png" />
     <Resource Include="Sprites\next7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\Tetris.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

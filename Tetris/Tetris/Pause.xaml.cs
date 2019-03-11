@@ -69,7 +69,7 @@ namespace Tetris
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
             mainForm.Close();
-            MainWindow NewGame = new MainWindow();
+            Difficulty NewGame = new Difficulty();
             this.Close();
             NewGame.ShowDialog();
         }

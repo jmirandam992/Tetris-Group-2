@@ -41,9 +41,9 @@ namespace Tetris
         /// <param name="e"></param>
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow newGame = new MainWindow();
+            Difficulty select = new Difficulty();
             this.Visibility = Visibility.Collapsed;
-            newGame.ShowDialog();
+            select.ShowDialog();
             this.Close();
         }
 
