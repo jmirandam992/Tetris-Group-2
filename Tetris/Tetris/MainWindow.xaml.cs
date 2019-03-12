@@ -92,6 +92,12 @@ namespace Tetris
         private int score = 0;
 
         /// <summary>
+        /// initage level count
+        /// </summary>
+        private int levelCnt = 1;
+        
+
+        /// <summary>
         /// Refresher to simulate gravity.
         /// </summary>
         /// <param name="sender">Sender Object</param>
@@ -177,14 +183,17 @@ namespace Tetris
         public MainWindow(int milliseconds)
         {
 
+            
             InitializeComponent();
-
             InitiateGame(milliseconds);
             initializeSound();
 
 
         }
 
+        /// <summary>
+        /// initalized the music for the game
+        /// </summary>
         private void initializeSound()
         {
             
@@ -203,6 +212,7 @@ namespace Tetris
 
     private void InitiateGame(int milliseconds)
         {
+            lblLevelOutput.Content = this.levelCnt;
             dispatcherTimer.Tick += DispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, milliseconds);
             dispatcherTimer.Start();
@@ -240,11 +250,22 @@ namespace Tetris
             playerControl.generate(player, grid, this.map);
             nextPart = rdm.Next(7);
             imgNextPiece.Source = new BitmapImage(new Uri(next[nextPart], UriKind.Relative));
+            levelUp();
         }
 
         private void pauseGame()
         {
             dispatcherTimer.Stop();
+        }
+
+        private void levelUp()
+        {
+            if (this.score == 10000)
+            {
+                this.levelCnt = levelCnt + 1;
+                lblLevelOutput.Content = this.levelCnt.ToString();
+            }
+           
         }
 
         private void resumeGame()
