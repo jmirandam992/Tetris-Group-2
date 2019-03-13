@@ -82,20 +82,27 @@ namespace Tetris
         private int lineCnt = 0;
 
         /// <summary>
-        /// Initiate Speed
-        /// </summary>
-        private int speed = 0;
-
-        /// <summary>
         /// initiate base score
         /// </summary>
-        private int score = 0;
+        private int score = 9900;
 
         /// <summary>
         /// initage level count
         /// </summary>
         private int levelCnt = 1;
-        
+
+        /// <summary>
+        /// score changed variabe true if score has changed false if it hasn't
+        /// </summary>
+        private bool scoreChanged = false;
+
+        /// <summary>
+        /// generic incrementer for the level updater 
+        /// </summary>
+        private int i = 1;
+
+
+        public int milliseconds = 0;
 
         /// <summary>
         /// Refresher to simulate gravity.
@@ -104,6 +111,7 @@ namespace Tetris
         /// <param name="e">Event Argument</param>
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
+            
             // top collision detection
             if (!(this.grid[3, 0].type != 0 || this.grid[4, 0].type != 0 || this.grid[5, 0].type != 0 ||
                   this.grid[3, 1].type != 0 ||
@@ -121,21 +129,30 @@ namespace Tetris
                         this.lineCnt += lines.Count;
                         if (lines.Count < 3)
                         {
-                            this.score += (lines.Count * 100);
+                            this.score += (lines.Count * 100 * i);
+                           // scoreChanged = true;
+                            levelUp();
+                            scoreChanged = true;
                         }
 
                         if (lines.Count == 3)
                         {
-                            this.score += 400;
+                            this.score += 400 * i;
+                            //scoreChanged = true;
+                            levelUp();
+                            scoreChanged = true;
                         }
 
                         if (lines.Count == 4)
                         {
-                            this.score += 800;
+                            this.score += 800 * i;
+                            levelUp();
+                            scoreChanged = true;
                         }
 
                         lblLinesOutput.Content = this.lineCnt.ToString();
                         lblScoreOutput.Content = this.score.ToString();
+                        
                     }
 
                     if (this.newPartCnt == 1)
@@ -210,11 +227,17 @@ namespace Tetris
             }
         }
 
-    private void InitiateGame(int milliseconds)
+        private void setTime(int milliseconds)
+        {
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, milliseconds);
+        }
+
+
+        private void InitiateGame(int milliseconds)
         {
             lblLevelOutput.Content = this.levelCnt;
             dispatcherTimer.Tick += DispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, milliseconds);
+            setTime(milliseconds);
             dispatcherTimer.Start();
 
             int nRows = grid.GetLength(1);
@@ -250,7 +273,7 @@ namespace Tetris
             playerControl.generate(player, grid, this.map);
             nextPart = rdm.Next(7);
             imgNextPiece.Source = new BitmapImage(new Uri(next[nextPart], UriKind.Relative));
-            levelUp();
+           
         }
 
         private void pauseGame()
@@ -260,12 +283,22 @@ namespace Tetris
 
         private void levelUp()
         {
-            if (this.score == 10000)
-            {
-                this.levelCnt = levelCnt + 1;
-                lblLevelOutput.Content = this.levelCnt.ToString();
-            }
-           
+            
+             //while i is less than i*10000 level = level else 
+                if (scoreChanged == true && score == i * 10000)
+                {
+                    this.levelCnt = levelCnt + 1;
+                    lblLevelOutput.Content = this.levelCnt.ToString();
+                    i++;
+                    double update = milliseconds * 1.5;
+                    milliseconds = Convert.ToInt32(update);
+                    setTime(milliseconds);
+
+                }
+                scoreChanged = false;
+                
+
+
         }
 
         private void resumeGame()

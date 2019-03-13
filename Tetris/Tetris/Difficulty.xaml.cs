@@ -1,5 +1,8 @@
-﻿
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="Difficulty.xaml.cs" company="Group 2">
+//     All Rights Reserved
+// </copyright>
+//-----------------------------------------------------------------------
 namespace Tetris
 {
     using System;
@@ -25,6 +28,9 @@ namespace Tetris
             InitializeComponent();
         }
 
+        GameSpeed speed = new GameSpeed();
+
+        
         private void EasyButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow newGame = new MainWindow(700);
