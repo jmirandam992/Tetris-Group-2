@@ -100,7 +100,11 @@ namespace Tetris.Objects
             this.thirdX = 6;
             this.thirdY = 0;
         }
-        public void square()
+
+        /// <summary>
+        /// Creates Square
+        /// </summary>
+        public void Square()
         {
             this.type = 2;
             this.compass = 0;
@@ -118,6 +122,10 @@ namespace Tetris.Objects
             this.thirdX = 4;
             this.thirdY = 0;
         }
+
+        /// <summary>
+        /// Creates Pyramid
+        /// </summary>
         public void Pyramid()
         {
             this.type = 3;
@@ -136,7 +144,11 @@ namespace Tetris.Objects
             this.thirdX = 5;
             this.thirdY = 0;
         }
-        public void smLeft()
+
+        /// <summary>
+        /// creates left
+        /// </summary>
+        public void SmLeft()
         {
             this.type = 4;
             this.compass = 0;
@@ -154,7 +166,11 @@ namespace Tetris.Objects
             this.thirdX = 5;
             this.thirdY = 0;
         }
-        public void smRight()
+
+        /// <summary>
+        /// creates right 
+        /// </summary>
+        public void SmRight()
         {
             this.type = 5;
             this.compass = 0;
@@ -172,6 +188,10 @@ namespace Tetris.Objects
             this.thirdX = 5;
             this.thirdY = 1;
         }
+
+        /// <summary>
+        /// creates left 'L'
+        /// </summary>
         public void Left()
         {
             this.type = 6;
@@ -190,6 +210,10 @@ namespace Tetris.Objects
             this.thirdX = 5;
             this.thirdY = 0;
         }
+
+        /// <summary>
+        /// creates right 'l'
+        /// </summary>
         public void Right()
         {
             this.type = 7;
@@ -209,38 +233,59 @@ namespace Tetris.Objects
             this.thirdY = 0;
         }
 
+        /// <summary>
+        /// generates random player
+        /// </summary>
+        /// <param name="part">Part that is generated</param>
         public void randomPlayer(int part)
         {
             if (part == 0)
             {
                 this.Long();
             }
+
             if (part == 1)
             {
-                this.square();
+                this.Square();
             }
+
             if (part == 2)
             {
                 this.Pyramid();
             }
+
             if (part == 3)
             {
-                this.smLeft();
+                this.SmLeft();
             }
+
             if (part == 4)
             {
-                this.smRight();
+                this.SmRight();
             }
+
             if (part == 5)
             {
                 this.Left();
             }
+
             if (part == 6)
             {
                 this.Right();
             }
         }
 
+        /// <summary>
+        /// updates shape
+        /// </summary>
+        /// <param name="x1">update x1</param>
+        /// <param name="y1">update y1</param>
+        /// <param name="x2">update x2</param>
+        /// <param name="y2">update y2</param>
+        /// <param name="x3">update x3</param>
+        /// <param name="y3">update y3</param>
+        /// <param name="x4">update x4</param>
+        /// <param name="y4">update y4</param>
         public void Update(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4)
         {
             this.controlX = x1;

@@ -360,11 +360,11 @@ namespace Tetris
         // Pause the game.
         private void btnPause_Click(object sender, RoutedEventArgs e)
         {
-            PauseGame();
+            this.PauseGame();
             Pause pMenu = new Pause(this);
             this.Visibility = Visibility.Hidden;
-            pMenu.ShowDialog();
-            resumeGame();
+           pMenu.ShowDialog();
+           this.resumeGame();
         }
 
         // Move the window.

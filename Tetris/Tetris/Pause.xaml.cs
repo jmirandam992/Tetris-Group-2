@@ -26,26 +26,6 @@ namespace Tetris
     /// </summary>
     public partial class Pause : Window
     {
-        /// <summary>
-        /// Users score
-        /// </summary>
-        public int Score;
-
-        /// <summary>
-        /// Difficulty.
-        /// </summary>
-        public int Level;
-
-        /// <summary>
-        /// Time the game has been active.
-        /// </summary>
-        public double Time;
-
-        /// <summary>
-        /// How many lines removed.
-        /// </summary>
-        public int Lines;
-
         public Window mainForm;
 
         public Pause(Window Mainform)
