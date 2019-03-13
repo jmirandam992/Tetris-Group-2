@@ -31,14 +31,14 @@ namespace Tetris
         /// </summary>
         public StartScreen()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         /// <summary>
         /// Initialization of the New Game Button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Click</param>
+        /// <param name="e">Event</param>
         private void button_Click(object sender, RoutedEventArgs e)
         {
             Difficulty select = new Difficulty();
@@ -50,8 +50,8 @@ namespace Tetris
         /// <summary>
         /// button to close the program
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Click this.</param>
+        /// <param name="e">Event this.</param>
         private void quitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -61,8 +61,8 @@ namespace Tetris
         /// <summary>
         /// about button action call
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Click this.</param>
+        /// <param name="e">Event this.</param>
         private void aboutButton_Click(object sender, RoutedEventArgs e)
         {
             About about = new About();
@@ -74,8 +74,8 @@ namespace Tetris
         /// <summary>
         /// Opens the Scores Window
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Click this.</param>
+        /// <param name="e">Event this.</param>
         private void scoresButton_Click(object sender, RoutedEventArgs e)
         {
             HighScores highScores = new HighScores();
@@ -87,8 +87,8 @@ namespace Tetris
         /// <summary>
         /// Left mouse button click for window movement
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Click this.</param>
+        /// <param name="e">Event this.</param>
         private void Start_Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)

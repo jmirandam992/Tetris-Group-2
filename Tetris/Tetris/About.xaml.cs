@@ -26,16 +26,6 @@ namespace Tetris
     public partial class About : Window
     {
         /// <summary>
-        /// Header of the rules.
-        /// </summary>
-        private string head;
-
-        /// <summary>
-        /// Rules for the game.
-        /// </summary>
-        private string desc;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="About"/> class.
         /// </summary>
         public About()

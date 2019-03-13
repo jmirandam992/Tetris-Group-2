@@ -50,25 +50,29 @@ namespace Tetris
 
         public Pause(Window Mainform)
         {
-            InitializeComponent();
-            mainForm = Mainform;
+            this.InitializeComponent();
+            this.mainForm = Mainform;
         }
 
         /// <summary>
         /// Close button.
         /// </summary>
-        private void btnResume1_Click(object sender, RoutedEventArgs e)
+        /// <param name="sender">Click management</param>
+        /// <param name="e">Event management</param>
+        private void BtnResume1Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            mainForm.Visibility = Visibility.Visible;
+            this.mainForm.Visibility = Visibility.Visible;
         }
 
         /// <summary>
         /// Resets the game button.
         /// </summary>
-        private void btnReset_Click(object sender, RoutedEventArgs e)
+        /// <param name="sender">Click management</param>
+        /// <param name="e">Event management</param>
+        private void BtnResetClick(object sender, RoutedEventArgs e)
         {
-            mainForm.Close();
+            this.mainForm.Close();
             Difficulty NewGame = new Difficulty();
             this.Close();
             NewGame.ShowDialog();
@@ -77,7 +81,9 @@ namespace Tetris
         /// <summary>
         /// Quits the game button.
         /// </summary>
-        private void btnQuit_Click(object sender, RoutedEventArgs e)
+        /// <param name="sender">Click management</param>
+        /// <param name="e">Event management</param>
+        private void BtnQuit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             System.Windows.Application.Current.Shutdown();
@@ -86,11 +92,13 @@ namespace Tetris
         /// <summary>
         /// To move the window around.
         /// </summary>
-        private void grdPauseLayout_MouseDown(object sender, MouseButtonEventArgs e)
+        /// <param name="sender">Click management</param>
+        /// <param name="e">Event management</param>
+        private void GrdPauseLayoutMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
             {
-                DragMove();
+                this.DragMove();
             }
         }
     }

@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:Tetris"
         mc:Ignorable="d"
         Title="Pause" Height="500" Width="500" AllowsTransparency="True" WindowStyle="None" ResizeMode="CanResizeWithGrip">
-    <Grid x:Name="grdPauseLayout" Background="#FFF4F4F5" MouseDown="grdPauseLayout_MouseDown">
+    <Grid x:Name="grdPauseLayout" Background="#FFF4F4F5" MouseDown="GrdPauseLayoutMouseDown">
         <Button x:Name="btnResume" Content="Resume" Height="30" Margin="146,89,146,0" VerticalAlignment="Top" BorderBrush="#FF33F4FD" BorderThickness="3" Foreground="#FF33F4FD" FontSize="16" FontWeight="Bold" Background="White" Width="200"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="61" TextWrapping="Wrap" Text="Pause" VerticalAlignment="Top" Width="492" Foreground="White" Background="#FF33F4FD" FontWeight="Bold" FontStyle="Italic" FontFamily="Broadway" FontSize="48" TextAlignment="Center"/>
-        <Button x:Name="btnReset" Content="Reset" Height="30" Margin="146,140,146,0" VerticalAlignment="Top" BorderBrush="#FF33F4FD" BorderThickness="3" Foreground="#FF33F4FD" FontSize="16" FontWeight="Bold" Background="White" Width="200" Click="btnReset_Click"/>
-        <Button x:Name="btnQuit" Content="Quit" Height="30" Margin="146,191,146,0" VerticalAlignment="Top" BorderBrush="#FF33F4FD" BorderThickness="3" Foreground="#FF33F4FD" FontSize="16" FontWeight="Bold" Background="White" Width="200" Click="btnQuit_Click"/>
-        <Button x:Name="btnResume1" Content="Resume" Height="30" Margin="146,89,146,0" VerticalAlignment="Top" BorderBrush="#FF33F4FD" BorderThickness="3" Foreground="#FF33F4FD" FontSize="16" FontWeight="Bold" Background="White" Width="200" Click="btnResume1_Click"/>
+        <Button x:Name="btnReset" Content="Reset" Height="30" Margin="146,140,146,0" VerticalAlignment="Top" BorderBrush="#FF33F4FD" BorderThickness="3" Foreground="#FF33F4FD" FontSize="16" FontWeight="Bold" Background="White" Width="200" Click="BtnResetClick"/>
+        <Button x:Name="btnQuit" Content="Quit" Height="30" Margin="146,191,146,0" VerticalAlignment="Top" BorderBrush="#FF33F4FD" BorderThickness="3" Foreground="#FF33F4FD" FontSize="16" FontWeight="Bold" Background="White" Width="200" Click="BtnQuit_Click"/>
+        <Button x:Name="btnResume1" Content="Resume" Height="30" Margin="146,89,146,0" VerticalAlignment="Top" BorderBrush="#FF33F4FD" BorderThickness="3" Foreground="#FF33F4FD" FontSize="16" FontWeight="Bold" Background="White" Width="200" Click="BtnResume1Click"/>
         <Rectangle x:Name="rctStatBackground" Fill="White" HorizontalAlignment="Left" Height="134" Margin="146,290,0,0" Stroke="#FF33F4FD" StrokeThickness="3" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
         <StackPanel x:Name="stckStatLabels" HorizontalAlignment="Left" Height="131" Margin="146,290,0,0" VerticalAlignment="Top" Width="100">
             <Label x:Name="lblScore" Content="Score :" FontSize="20" Foreground="#FF33F4FD" FontWeight="Bold" Width="74" Margin="25,0,0,0" Height="32" IsEnabled="False"/>

@@ -59,7 +59,6 @@
       <DependentUpon>Difficulty.xaml</DependentUpon>
     </Compile>
     <Compile Include="Objects\Input.cs" />
-    <Compile Include="Objects\SidePanel.cs" />
     <Compile Include="Objects\Player.cs" />
     <Compile Include="Objects\Tile.cs" />
     <Compile Include="Pause.xaml.cs">

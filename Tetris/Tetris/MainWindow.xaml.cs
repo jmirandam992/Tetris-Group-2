@@ -3,14 +3,12 @@
 //     All Rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
-
-using System.Media;
-
 namespace Tetris
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Media;
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows;
@@ -25,13 +23,12 @@ namespace Tetris
     using System.Windows.Threading;
     using Objects;
     using Tetris;
-
+    
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-
         /// <summary>
         /// Variables used.
         /// </summary>
@@ -87,12 +84,12 @@ namespace Tetris
         private int score = 9900;
 
         /// <summary>
-        /// initage level count
+        /// initiate level count
         /// </summary>
         private int levelCnt = 1;
 
         /// <summary>
-        /// score changed variabe true if score has changed false if it hasn't
+        /// score changed variable true if score has changed false if it hasn't
         /// </summary>
         private bool scoreChanged = false;
 
@@ -101,8 +98,25 @@ namespace Tetris
         /// </summary>
         private int i = 1;
 
+        /// <summary>
+        /// milliseconds time variable
+        /// </summary>
+        private int milliseconds = 0;
 
-        public int milliseconds = 0;
+        /// <summary>
+        /// Change the image of a tile.
+        /// </summary>
+        /// <param name="x">x coordinates</param>
+        /// <param name="y">y coordinates</param>
+        public void ImgChange(int x, int y)
+        {
+            Image im = new Image();
+            im.Source = new BitmapImage(new Uri(this.grid[x, y].Tiles[this.grid[x, y].type], UriKind.Relative));
+            im.SetValue(System.Windows.Controls.Grid.ColumnProperty, x);
+            im.SetValue(System.Windows.Controls.Grid.RowProperty, y);
+
+            map.Children.Add(im);
+        }
 
         /// <summary>
         /// Refresher to simulate gravity.
@@ -111,8 +125,7 @@ namespace Tetris
         /// <param name="e">Event Argument</param>
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-            
-            // top collision detection
+        // top collision detection
             if (!(this.grid[3, 0].type != 0 || this.grid[4, 0].type != 0 || this.grid[5, 0].type != 0 ||
                   this.grid[3, 1].type != 0 ||
                   this.grid[4, 1].type != 0 || this.grid[5, 1].type != 0))
@@ -129,92 +142,72 @@ namespace Tetris
                         this.lineCnt += lines.Count;
                         if (lines.Count < 3)
                         {
-                            this.score += (lines.Count * 100 * i);
-                           // scoreChanged = true;
-                            levelUp();
-                            scoreChanged = true;
+                            this.score += lines.Count * 100 * this.i;
+                         
+                           this.LevelUp();
+                            this.scoreChanged = true;
                         }
 
                         if (lines.Count == 3)
                         {
-                            this.score += 400 * i;
-                            //scoreChanged = true;
-                            levelUp();
-                            scoreChanged = true;
+                            this.score += 400 * this.i;
+                           
+                            this.LevelUp();
+                            this.scoreChanged = true;
                         }
 
                         if (lines.Count == 4)
                         {
-                            this.score += 800 * i;
-                            levelUp();
-                            scoreChanged = true;
+                            this.score += 800 * this.i;
+                            this.LevelUp();
+                            this.scoreChanged = true;
                         }
 
                         lblLinesOutput.Content = this.lineCnt.ToString();
                         lblScoreOutput.Content = this.score.ToString();
-                        
+                        }
+
+                if (this.newPartCnt == 1)
+                    {
+                        this.player.randomPlayer(this.nextPart);
+                        this.playerControl.generate(this.player, this.grid, this.map);
+                        this.nextPart = this.rdm.Next(7);
+                        imgNextPiece.Source = new BitmapImage(new Uri(this.next[this.nextPart], UriKind.Relative));
                     }
 
-                    if (this.newPartCnt == 1)
+                    this.newPartCnt++;
+                    if (this.newPartCnt == 2)
                     {
-                        player.randomPlayer(nextPart);
-                        playerControl.generate(player, grid, this.map);
-                        nextPart = rdm.Next(7);
-                        imgNextPiece.Source = new BitmapImage(new Uri(next[nextPart], UriKind.Relative));
-                    }
-
-                    newPartCnt++;
-                    if (newPartCnt == 2)
-                    {
-                        newPartCnt = 0;
+                        this.newPartCnt = 0;
                     }
                 }
             }
             else
             {
-                //put end game code here
-                if (player.isActive == true)
+                // Put end game code here
+                if (this.player.isActive == true)
                 {
-                    playerControl.Bounds(2, player, grid, this.map);
+                    this.playerControl.Bounds(2, this.player, this.grid, this.map);
                 }
             }
         }
 
         /// <summary>
-        /// Change the img of a tile.
-        /// </summary>
-        public void imgChange(int x, int y)
-        {
-            Image im = new Image();
-            im.Source = new BitmapImage(new Uri(grid[x, y].tiles[grid[x, y].type], UriKind.Relative));
-            im.SetValue(System.Windows.Controls.Grid.ColumnProperty, x);
-            im.SetValue(System.Windows.Controls.Grid.RowProperty, y);
-
-            map.Children.Add(im);
-        }
-
-        /// <summary>
         /// use this to set the difficulty for the game 
         /// </summary>
-        /// <param name="milliseconds"></param>
+        /// <param name="milliseconds">milliseconds for timer</param>
         public MainWindow(int milliseconds)
         {
-
-            
-            InitializeComponent();
-            InitiateGame(milliseconds);
-            initializeSound();
-
-
+            this.InitializeComponent();
+            this.InitiateGame(milliseconds);
+            this.InitializeSound();
         }
 
         /// <summary>
         /// initalized the music for the game
         /// </summary>
-        private void initializeSound()
+        private void InitializeSound()
         {
-            
-        
             System.IO.Stream str = Properties.Resources.Tetris1;
             System.Media.SoundPlayer music = new SoundPlayer(str);
             music.Play();
@@ -223,25 +216,32 @@ namespace Tetris
             if (soundFinished)
             {
                 soundFinished = false;
-                Task.Factory.StartNew(() =>{ music.PlaySync(); soundFinished = true;});
+                Task.Factory.StartNew(()=>{music.PlaySync(); soundFinished = true;});
             }
         }
 
-        private void setTime(int milliseconds)
+        /// <summary>
+        /// set time
+        /// </summary>
+        /// <param name="milliseconds">setting milliseconds for interval timer</param>
+        private void SetTime(int milliseconds)
         {
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, milliseconds);
+            this.dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, milliseconds);
         }
 
-
+        /// <summary>
+        /// Initiate the main game
+        /// </summary>
+        /// <param name="milliseconds">number of seconds for dispatcher</param>
         private void InitiateGame(int milliseconds)
         {
             lblLevelOutput.Content = this.levelCnt;
-            dispatcherTimer.Tick += DispatcherTimer_Tick;
-            setTime(milliseconds);
-            dispatcherTimer.Start();
+            this.dispatcherTimer.Tick += this.DispatcherTimer_Tick;
+            this.SetTime(milliseconds);
+            this.dispatcherTimer.Start();
 
-            int nRows = grid.GetLength(1);
-            int nCols = grid.GetLength(0);
+            int nRows = this.grid.GetLength(1);
+            int nCols = this.grid.GetLength(0);
 
             // Creates cells on grid
             for (int i = 0; i < nCols; i++)
@@ -257,129 +257,117 @@ namespace Tetris
             }
 
             // Fills the array objects with values
-            for (int r = 0; r < grid.GetLength(0); r++)
+            for (int r = 0; r < this.grid.GetLength(0); r++)
             {
-                for (int c = 0; c < grid.GetLength(1); c++)
+                for (int c = 0; c < this.grid.GetLength(1); c++)
                 {
-                    grid[r, c] = new Tile();
-                    grid[r, c].type = 0;
-                    grid[r, c].xPos = r;
-                    grid[r, c].yPos = c;
-                    imgChange(r, c);
+                    this.grid[r, c] = new Tile();
+                    this.grid[r, c].type = 0;
+                    this.grid[r, c].xPos = r;
+                    this.grid[r, c].yPos = c;
+                    this.ImgChange(r, c);
                 }
             }
-            nextPart = rdm.Next(7);
-            player.randomPlayer(nextPart);
-            playerControl.generate(player, grid, this.map);
-            nextPart = rdm.Next(7);
-            imgNextPiece.Source = new BitmapImage(new Uri(next[nextPart], UriKind.Relative));
-           
+
+            this.nextPart = this.rdm.Next(7);
+            this.player.randomPlayer(this.nextPart);
+            this.playerControl.generate(this.player, this.grid, this.map);
+            this.nextPart = this.rdm.Next(7);
+            this.imgNextPiece.Source = new BitmapImage(new Uri(this.next[this.nextPart], UriKind.Relative));
+           }
+
+        /// <summary>
+        /// Pauses the Game
+        /// </summary>
+        private void PauseGame()
+        {
+            this.dispatcherTimer.Stop();
         }
 
-        private void pauseGame()
+        /// <summary>
+        /// Levels up and increases speed
+        /// </summary>
+        private void LevelUp()
         {
-            dispatcherTimer.Stop();
-        }
-
-        private void levelUp()
-        {
-            
-             //while i is less than i*10000 level = level else 
-                if (scoreChanged == true && score == i * 10000)
+           if (this.scoreChanged == true && this.score == this.i * 10000)
                 {
-                    this.levelCnt = levelCnt + 1;
+                    this.levelCnt = this.levelCnt + 1;
                     lblLevelOutput.Content = this.levelCnt.ToString();
-                    i++;
-                    double update = milliseconds * 1.5;
-                    milliseconds = Convert.ToInt32(update);
-                    setTime(milliseconds);
-
+                this.i++;
+                    double update = this.milliseconds * 1.5;
+                    this.milliseconds = Convert.ToInt32(update);
+                this.SetTime(this.milliseconds);
                 }
-                scoreChanged = false;
-                
 
-
-        }
+            this.scoreChanged = false;
+  }
 
         private void resumeGame()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             Keyboard.Focus(this);
-            dispatcherTimer.Start();
-            playerControl.generate(player, grid, this.map);
-            nextPart = rdm.Next(7);
-            imgNextPiece.Source = new BitmapImage(new Uri(next[nextPart], UriKind.Relative));
+            this.dispatcherTimer.Start();
+            this.playerControl.generate(this.player, this.grid, this.map);
+            this.nextPart = this.rdm.Next(7);
+            this.imgNextPiece.Source = new BitmapImage(new Uri(this.next[this.nextPart], UriKind.Relative));
         }
 
         /// <summary>
         /// Down key press code.
         /// </summary>
+        /// <param name="e">Event Argument</param>
         protected override void OnKeyDown(KeyEventArgs e)
         {
-
-
-            /// <summary>
-            /// Up key press code.
-            /// </summary>
-
-            if (player.isActive == true)
+           
+            // Up key press code.
+            if (this.player.isActive == true)
             {
                 if (e.Key == Key.Up)
                 {
-                    playerControl.Bounds(0, player, grid, this.map);
+                    this.playerControl.Bounds(0, this.player, this.grid, this.map);
                 }
             }
 
-            /// <summary>
-            /// Right key press code.
-            /// </summary>
-
-            if (player.isActive == true)
+                        // Right key press code.
+            if (this.player.isActive == true)
             {
                 if (e.Key == Key.Right)
                 {
-                    playerControl.Bounds(1, player, grid, this.map);
+                    this.playerControl.Bounds(1, this.player, this.grid, this.map);
                 }
             }
 
-            /// <summary>
-            /// Down key press code.
-            /// </summary>
-            if (player.isActive == true)
+       
+            // Down key press code.
+            if (this.player.isActive == true)
             {
                 if (e.Key == Key.Down)
                 {
-                    playerControl.Bounds(2, player, grid, this.map);
+                    this.playerControl.Bounds(2, this.player, this.grid, this.map);
                 }
             }
 
-            /// <summary>
-            /// Left key press code.
-            /// </summary>
-            if (player.isActive == true)
+            // Left key press code.
+            if (this.player.isActive == true)
             {
                 if (e.Key == Key.Left)
                 {
-                    playerControl.Bounds(3, player, grid, this.map);
+                   this.playerControl.Bounds(3, this.player, this.grid, this.map);
                 }
             }
         }
 
-        /// <summary>
-        /// Pause the game.
-        /// </summary>
+        // Pause the game.
         private void btnPause_Click(object sender, RoutedEventArgs e)
         {
-            pauseGame();
+            PauseGame();
             Pause pMenu = new Pause(this);
             this.Visibility = Visibility.Hidden;
             pMenu.ShowDialog();
             resumeGame();
         }
 
-        /// <summary>
-        /// Move the window.
-        /// </summary>
+        // Move the window.
         private void rctSidePanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -387,10 +375,8 @@ namespace Tetris
                 DragMove();
             }
         }
-
-        /// <summary>
-        /// Move the window.
-        /// </summary>
+        
+        // Move the window.
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
            

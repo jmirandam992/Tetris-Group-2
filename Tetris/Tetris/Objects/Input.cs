@@ -31,7 +31,7 @@ namespace Tetris
         public void ImgChange(int x, int y, Tile[,] grid, Grid map)
         {
             Image im = new Image();
-            im.Source = new BitmapImage(new Uri(grid[x, y].tiles[grid[x, y].type], UriKind.Relative));
+            im.Source = new BitmapImage(new Uri(grid[x, y].Tiles[grid[x, y].type], UriKind.Relative));
             im.SetValue(Grid.ColumnProperty, x);
             im.SetValue(Grid.RowProperty, y);
 

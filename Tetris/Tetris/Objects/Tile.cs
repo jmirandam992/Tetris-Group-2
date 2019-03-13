@@ -25,7 +25,7 @@ namespace Tetris
         /// <summary>
         /// Imgs used.
         /// </summary>
-        public readonly string[] tiles = { "Sprites\\0.png", "Sprites\\1.png", "Sprites\\2.png", "Sprites\\3.png", "Sprites\\4.png", "Sprites\\5.png", "Sprites\\6.png", "Sprites\\7.png" };
+        public readonly string[] Tiles = { "Sprites\\0.png", "Sprites\\1.png", "Sprites\\2.png", "Sprites\\3.png", "Sprites\\4.png", "Sprites\\5.png", "Sprites\\6.png", "Sprites\\7.png" };
 
         /// <summary>
         /// What img is used.
